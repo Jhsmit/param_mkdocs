@@ -1,0 +1,34 @@
+[tool.poetry]
+name = "param-mkdocs"
+version = "0.1.0"
+description = "Generate mkdocs api docs for param"
+authors = ["Jochem Smit <jhsmit@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [{include = "param_mkdocs"}]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+param = "^1.12.3"
+
+[tool.poetry.group.docs.dependencies]
+mkdocs = "^1.4.2"
+mkdocstrings = {extras = ["python"], version = "^0.19.1"}
+mkdocs-material = "^8.5.11"
+pygments = "^2.13.0"
+mkdocs-gen-files = "^0.4.0"
+mkdocs-literate-nav = "^0.5.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.flake8]
+max-line-length = 100
+ignore = "D203"
+exclude = [".git", "__pycache__", "build", "dist", "docs"]
+max-complexity = 10
+
+[tool.black]
+line-length = 100
