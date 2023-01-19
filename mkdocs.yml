@@ -1,0 +1,53 @@
+### Site metadata ###
+
+site_name: param mkdocs
+site_description: Autodoc of param.Parameterized classes using mkdocs
+site_url: https://jhsmit.github.io/param_mkdocs/
+
+repo_url: https://github.com/Jhsmit/param_mkdocs/
+edit_uri: edit/master/docs/
+
+### Build settings ###
+
+theme:
+  name: material
+
+markdown_extensions:
+  - codehilite
+  - markdown.extensions.codehilite:
+      guess_lang: false
+
+nav:
+  - Home: index.md
+  # - API Reference: reference/
+
+watch:
+  - param_docs
+
+plugins:
+  - search
+  #- gen-files:
+#      scripts:
+#        - docs/gen_ref_pages.py
+  - literate-nav:
+      nav_file: SUMMARY.md
+  - mkdocstrings:
+      default_handler: python
+      custom_templates: param_templates
+      handlers:
+        python:
+          options:
+            enable_inventory: true
+            show_signature_annotations: false
+            members_order: source
+            show_if_no_docstring: False
+          import:
+            - https://docs.python.org/3/objects.inv
+            - https://numpy.org/doc/stable/objects.inv
+            - https://docs.scipy.org/doc/scipy/objects.inv
+            - https://pandas.pydata.org/docs/objects.inv
+          paths: [param_docs]
+
+
+extra_css:
+- css/styles.css
