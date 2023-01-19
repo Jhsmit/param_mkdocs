@@ -9,13 +9,17 @@ class FruitStallController(param.Parameterized):
     This is the next line after the whitespace.
     """
     title = 'Fruit Stall'
-    random_attribute = 10  # not shown in GUI
+    random_attribute = 10  # not shown in web application
     hidden_param = param.Boolean(precedence=-1,
                                  doc='This parameter is documented but due to low precedence not shown in documentation.')
+
     fruit = param.Selector(default='apple', objects=['apple', 'pear', 'banana'],
                            doc='Select type of fruit to buy.')
+
     quantity = param.Integer(5, bounds=(0, None), doc='Number of selected fruit to buy.')
+
     price = param.Number(0., constant=True, bounds=(0, None), doc='Price of the fruit per piece.')
+
     button = param.Action(lambda x: print('You bought fruit'),
                                  doc='Press this button to buy some fruit!', label='Make Purchase')
 
